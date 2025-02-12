@@ -23,23 +23,22 @@ easily, and also for implementing microservice resilience patterns; and it has
 been battle tested in production at scale.
 '''
 
-
-from typing import Tuple
-
-# TODO: When we drop support for Python 3.7, change the following import to:
-#   from typing import Final
-from typing_extensions import Final
+import importlib.metadata
+from typing import Final, Tuple
 
 
-__title__: Final[str] = 'pottery'
-__version__: Final[str] = '3.0.0'
-__description__: Final[str] = __doc__.split(sep='\n\n', maxsplit=1)[0]
-__url__: Final[str] = 'https://github.com/brainix/pottery'
-__author__: Final[str] = 'Rajiv Bakulesh Shah'
-__author_email__: Final[str] = 'brainix@gmail.com'
-__license__: Final[str] = 'Apache 2.0'
-__keywords__: Final[str] = 'Redis client persistent storage'
-__copyright__: Final[str] = f'Copyright © 2015-2022, {__author__}, original author.'
+
+metadata = importlib.metadata.metadata('pottery')
+
+__title__: Final[str]  = metadata['Name']
+__version__: Final[str]  = metadata['Version']
+__description__: Final[str]  = metadata['Summary']
+__url__: Final[str]  = metadata['Home-page']
+__author__: Final[str]  = metadata['Author']
+__author_email__: Final[str]  = metadata['Author-email']
+__license__: Final[str]  = metadata['License']
+__keywords__: Final[str]  = metadata['Keywords']
+__copyright__: Final[str] = metadata['Copyright']
 
 
 from .monkey import PotteryEncoder  # isort: skip
